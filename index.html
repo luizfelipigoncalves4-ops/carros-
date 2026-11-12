@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111318">
+<title>Veloce Motors | Veículos selecionados</title>
+<style>
+:root{--bg:#111318;--surface:#191d24;--text:#f4f5f7;--muted:#a5abb5;--red:#c83232;--red2:#e04747;--line:rgba(255,255,255,.1)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1140px,92%);margin:auto}
+header{position:sticky;top:0;z-index:10;background:rgba(17,19,24,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-size:21px;font-weight:900;letter-spacing:1.2px}
+.brand span{color:var(--red2)}
+nav{display:flex;gap:28px;color:#d5d8de;font-size:14px}
+nav a:hover{color:#fff}
+.nav-cta{background:var(--red);padding:11px 17px;border-radius:6px;font-weight:700;font-size:13px}
+.menu{display:none;background:none;color:white;border:1px solid var(--line);padding:9px 12px;border-radius:6px}
+.hero{min-height:535px;display:flex;align-items:center;background:linear-gradient(90deg,rgba(12,14,18,.96) 0%,rgba(12,14,18,.82) 42%,rgba(12,14,18,.2) 100%),url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1900&q=85') center/cover}
+.hero-content{max-width:600px;padding:80px 0}
+.eyebrow{font-size:11px;color:#ef7777;font-weight:800;letter-spacing:2.5px;text-transform:uppercase}
+.hero h1{font-size:clamp(38px,5.5vw,64px);line-height:1.05;margin:16px 0}
+.hero h1 span{color:#e45a5a}
+.hero p{max-width:480px;color:#c1c5cd;font-size:16px;line-height:1.7}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 19px;border-radius:6px;font-size:13px;font-weight:700;transition:.2s}
+.primary{background:var(--red);color:white}
+.primary:hover{background:var(--red2);transform:translateY(-2px)}
+.secondary{border:1px solid rgba(255,255,255,.35)}
+.secondary:hover{border-color:#fff}
+.trust{background:#171a20;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:20px 0}
+.trust-item{display:flex;align-items:center;justify-content:center;gap:12px;color:#e5e7eb;font-size:13px}
+.trust-item b{display:block}
+.trust-item small{display:block;color:var(--muted);font-size:11px;margin-top:4px}
+.trust-icon{color:#e45a5a;font-size:22px}
+section{padding:76px 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:28px}
+.section-head h2{font-size:clamp(28px,4vw,39px);margin:8px 0 0}
+.section-head p{color:var(--muted);max-width:400px;line-height:1.6;margin:0;font-size:14px}
+.cars{display:grid;grid-template-columns:repeat(3,1fr);gap:19px}
+.car{background:var(--surface);border:1px solid var(--line);border-radius:9px;overflow:hidden;transition:.22s}
+.car:hover{transform:translateY(-4px);border-color:rgba(224,71,71,.5)}
+.car img{width:100%;height:205px;object-fit:cover;display:block}
+.car-body{padding:18px}
+.tag{color:#ef7777;font-size:10px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase}
+.car h3{font-size:18px;margin:8px 0 13px}
+.details{display:flex;gap:13px;flex-wrap:wrap;color:var(--muted);font-size:11px;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.price-row{display:flex;justify-content:space-between;align-items:center;margin-top:15px}
+.price{font-size:19px;font-weight:800}
+.price small{display:block;color:var(--muted);font-size:10px;font-weight:400;margin-top:4px}
+.more{font-size:12px;color:#f08080;font-weight:700}
+.about{background:#171a20}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.about-img{width:100%;height:350px;object-fit:cover;border-radius:9px}
+.about h2{font-size:clamp(29px,4vw,42px);margin:10px 0}
+.about p{color:var(--muted);line-height:1.8;font-size:14px}
+.features{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+.feature{padding:14px;background:var(--surface);border:1px solid var(--line);border-radius:7px}
+.feature b{display:block;color:#f08080;font-size:13px;margin-bottom:5px}
+.feature span{font-size:11px;color:var(--muted)}
+.contact{background:#242932}
+.contact-inner{display:flex;align-items:center;justify-content:space-between;gap:25px}
+.contact h2{font-size:clamp(25px,4vw,36px);margin:0 0 8px}
+.contact p{margin:0;color:#c0c5ce;font-size:14px}
+.contact .btn{background:var(--red);color:#fff}
+footer{padding:30px 0;color:var(--muted);font-size:12px}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:22px}
+@media(max-width:780px){
+nav{display:none;position:absolute;top:72px;left:0;right:0;padding:18px 4%;background:#171a20;flex-direction:column;gap:18px}
+nav.open{display:flex}
+.menu{display:block}
+.nav-cta{display:none}
+.hero{min-height:500px;background-position:60% center}
+.cars{grid-template-columns:repeat(2,1fr)}
+.about-grid{grid-template-columns:1fr;gap:28px}
+.about-img{height:290px}
+}
+@media(max-width:560px){
+.cars{grid-template-columns:1fr}
+.trust-grid{grid-template-columns:1fr;gap:16px}
+.trust-item{justify-content:flex-start}
+.section-head,.contact-inner{align-items:flex-start;flex-direction:column}
+.hero-content{padding:65px 0}
+.hero p{font-size:14px}
+section{padding:60px 0}
+.car img{height:215px}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="wrap nav">
+<a class="brand" href="#inicio">VELOCE<span>.</span> MOTORS</a>
+<nav id="nav">
+<a href="#inicio">Início</a>
+<a href="#estoque">Veículos</a>
+<a href="#sobre">Sobre nós</a>
+<a href="#contato">Contato</a>
+</nav>
+<a class="nav-cta" href="#contato">Fale conosco</a>
+<button class="menu" onclick="document.getElementById('nav').classList.toggle('open')">Menu ☰</button>
+</div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+<div class="wrap">
+<div class="hero-content">
+<div class="eyebrow">Veloce Motors · Qualidade e confiança</div>
+<h1>Encontre o carro ideal para <span>você.</span></h1>
+<p>Veículos selecionados, atendimento transparente e ótimas oportunidades para você fazer uma escolha com tranquilidade.</p>
+<div class="actions">
+<a class="btn primary" href="#estoque">Ver veículos　→</a>
+<a class="btn secondary" href="#sobre">Conheça a loja</a>
+</div>
+</div>
+</div>
+</section>
+
+<div class="trust">
+<div class="wrap trust-grid">
+<div class="trust-item"><span class="trust-icon">✓</span><div><b>Compra segura</b><small>Mais confiança em cada etapa</small></div></div>
+<div class="trust-item"><span class="trust-icon">◇</span><div><b>Veículos selecionados</b><small>Qualidade e procedência</small></div></div>
+<div class="trust-item"><span class="trust-icon">◎</span><div><b>Atendimento próximo</b><small>Estamos aqui para ajudar</small></div></div>
+</div>
+</div>
+
+<section id="estoque">
+<div class="wrap">
+<div class="section-head">
+<div><div class="eyebrow">Oportunidades</div><h2>Veículos em destaque</h2></div>
+<p>Confira alguns modelos do nosso catálogo e encontre aquele que combina com seu momento.</p>
+</div>
+
+<div class="cars">
+<article class="car">
+<img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=900&q=80" alt="Carro esportivo vermelho">
+<div class="car-body">
+<span class="tag">Esportivo</span>
+<h3>Chevrolet Camaro</h3>
+<div class="details"><span>2022</span><span>Automático</span><span>Gasolina</span></div>
+<div class="price-row"><div class="price">R$ 289.900<small>Preço demonstrativo</small></div><a class="more" href="#contato">Consultar →</a></div>
+</div>
+</article>
+
+<article class="car">
+<img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=900&q=80" alt="Sedã de luxo">
+<div class="car-body">
+<span class="tag">Premium</span>
+<h3>Mercedes-Benz Classe C</h3>
+<div class="details"><span>2023</span><span>Automático</span><span>Flex</span></div>
+<div class="price-row"><div class="price">R$ 239.900<small>Preço demonstrativo</small></div><a class="more" href="#contato">Consultar →</a></div>
+</div>
+</article>
+
+<article class="car">
+<img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=900&q=80" alt="SUV moderno">
+<div class="car-body">
+<span class="tag">SUV</span>
+<h3>Jeep Compass</h3>
+<div class="details"><span>2024</span><span>Automático</span><span>Flex</span></div>
+<div class="price-row"><div class="price">R$ 169.900<small>Preço demonstrativo</small></div><a class="more" href="#contato">Consultar →</a></div>
+</div>
+</article>
+</div>
+</div>
+</section>
+
+<section class="about" id="sobre">
+<div class="wrap about-grid">
+<img class="about-img" src="https://images.unsplash.com/photo-1489824904134-891ab64532f1?auto=format&fit=crop&w=1200&q=85" alt="Carro em exposição">
+<div>
+<div class="eyebrow">Sobre a Veloce Motors</div>
+<h2>Uma escolha segura começa com confiança.</h2>
+<p>Nosso objetivo é tornar a compra do seu próximo veículo uma experiência simples e transparente. Conte com uma equipe preparada para apresentar opções e ajudar você em cada etapa.</p>
+<div class="features">
+<div class="feature"><b>Procedência</b><span>Veículos selecionados</span></div>
+<div class="feature"><b>Transparência</b><span>Informações claras</span></div>
+<div class="feature"><b>Atendimento</b><span>Atenção às suas necessidades</span></div>
+<div class="feature"><b>Oportunidades</b><span>Opções para diferentes perfis</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="contact" id="contato">
+<div class="wrap contact-inner">
+<div>
+<h2>Vamos encontrar seu próximo carro?</h2>
+<p>Entre em contato para saber mais sobre os veículos disponíveis.</p>
+</div>
+<a class="btn" href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20conhecer%20os%20veículos." target="_blank" rel="noopener">Falar pelo WhatsApp　→</a>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="wrap foot">
+<a class="brand" href="#inicio">VELOCE<span>.</span> MOTORS</a>
+<span>© 2026 Veloce Motors · Modelo demonstrativo</span>
+<span>Instagram　·　WhatsApp</span>
+</div>
+</footer>
+
+</body>
+</html>
